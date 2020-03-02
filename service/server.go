@@ -21,6 +21,6 @@ func NewServer() *negroni.Negroni {
 }
 
 func initRoutes(mx *mux.Router, formatter *render.Render) {
-	mx.HandleFunc("skus/{sku}",
+	mx.HandleFunc("/products/{productId}",
 		getFullfillmentStatusHandler(formatter)).Methods("GET")
 }

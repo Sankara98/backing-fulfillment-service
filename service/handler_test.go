@@ -26,7 +26,7 @@ func TestGetFullFillmentStatusReturns200ForExistingSKU(t *testing.T) {
 	targetSKU := "THINGAMAJIG12"
 
 	recorder = httptest.NewRecorder()
-	request, _ = http.NewRequest("GET", "/skus/"+targetSKU, nil)
+	request, _ = http.NewRequest("GET", "/products/"+targetSKU, nil)
 	server.ServeHTTP(recorder, request)
 
 	var detail fullfillmentStatus
@@ -48,8 +48,8 @@ func TestGetFullFillmentStatusReturns200ForExistingSKU(t *testing.T) {
 		t.Errorf("Expected shipswithin 14 days, got %d", detail.ShipsWithin)
 	}
 
-	if detail.SKU != "THINGAMAJIG12" {
-		t.Errorf("Expected SKU THINGAMAJIG12 , got %s", detail.SKU)
+	if detail.ProductID != "THINGAMAJIG12" {
+		t.Errorf("Expected SKU THINGAMAJIG12 , got %s", detail.ProductID)
 	}
 
 }

@@ -15,10 +15,10 @@ import (
 func getFullfillmentStatusHandler(formatter *render.Render) http.HandlerFunc {
 	return func(w http.ResponseWriter, req *http.Request) {
 		vars := mux.Vars(req)
-		sku := vars["sku"]
+		productID := vars["productId"]
 
-		formatter.JSON(w, http.StatusOK, fullfillmentStatus{
-			SKU:             sku,
+		formatter.JSON(w, http.StatusOK, &fullfillmentStatus{
+			ProductID:       productID,
 			ShipsWithin:     14,
 			QuantityInStock: 100,
 		})
